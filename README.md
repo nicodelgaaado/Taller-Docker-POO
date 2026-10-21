@@ -1,7 +1,5 @@
 # Taller Docker Semana 13
 
-Proyecto entregable para el estudiante **841024**. El repositorio inicial no contenía `eco-air-backend`; por ello se incluye una aplicación Spring Boot 3 con Hibernate, H2 y una API mínima de alertas para que la imagen se pueda compilar y auditar.
-
 ## Construcción
 
 ```bash
