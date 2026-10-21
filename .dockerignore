@@ -1,0 +1,14 @@
+.git
+.github
+.idea
+.vscode
+target
+build
+out
+*.log
+*.pdf
+*.zip
+*.docx
+FORENSIC_REPORT.md
+README.md
+scripts

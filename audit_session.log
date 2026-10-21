@@ -1,0 +1,446 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261020201253
+Nombre de usuario: NICOLAS-PC\Nicolas
+Usuario RunAs: NICOLAS-PC\Nicolas
+Nombre de la configuración: 
+Máquina: NICOLAS-PC (Microsoft Windows NT 10.0.26300.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/audit.ps1
+Id. de proceso: 15336
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Nicolas\Documents\Universidad\Semestres\Sexto Semestre\Programación Orientada a Objetos\Taller 5\Taller-Docker-POO\audit_session.log
+docker build --build-arg STUDENT_ID="841024" -t eco-air-backend:1.0.0 .
+
+docker inspect --format={{.Id}} eco-air-backend:1.0.0
+
+docker history --human --format "table {{.Size}}\t{{.CreatedBy}}" eco-air-backend:1.0.0
+
+docker run -d --name eco_air_active -p 8080:8080 eco-air-backend:1.0.0
+
+docker top eco_air_active -o pid,user,comm
+
+docker exec eco_air_active id
+
+docker exec eco_air_active env | Select-String OPERATOR_ID
+
+OPERATOR_ID=841024
+docker exec eco_air_active touch /etc/crontab_fake
+
+ExitCode: 1
+docker exec eco_air_active which mvn
+
+ExitCode: 1
+docker exec eco_air_active find / -name "*.java"
+docker : find: /root: Permission denied
+En C:\Users\Nicolas\Documents\Universidad\Semestres\Sexto Semestre\Programación Orientada a Objetos\Taller 
+5\Taller-Docker-POO\scripts\audit.ps1: 36 Carácter: 5
++     docker exec eco_air_active find / -name '*.java' 2>$null
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (find: /root: Permission denied:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+find: /proc/tty/driver: Permission denied
+
+ExitCode: 1
+docker logs --timestamps eco_air_active | Select-String "Started EcoAirApplication"
+2026-10-21T01:13:09.223150719Z 2026-10-21T01:13:09.222Z  INFO 1 --- [           main]
+e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 5.132 seconds (process running for 6.174)
+docker stats --no-stream eco_air_active
+
+docker run -d --name eco_air_crash -m 48m eco-air-backend:1.0.0
+
+docker inspect eco_air_crash --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker logs --timestamps eco_air_crash
+docker : 2026-10-21T01:13:16.782275661Z Picked up JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=75.0
+-XX:InitialRAMPercentage=20.0 -XX:+UseSerialGC -Djava.security.egd=file:/dev/urandom
+En C:\Users\Nicolas\Documents\Universidad\Semestres\Sexto Semestre\Programación Orientada a Objetos\Taller
+5\Taller-Docker-POO\scripts\audit.ps1: 49 Carácter: 5
++     docker logs --timestamps eco_air_crash 2>&1
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-10-21T01:1...le:/dev/urandom:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+docker run -d --name eco_air_256 -m 256m eco-air-backend:1.0.0
+
+docker inspect eco_air_256 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker logs --timestamps eco_air_256 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:13:35.398679856Z 2026-10-21T01:13:35.398Z  INFO 1 --- [           main]
+e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 7.046 seconds (process running for 7.88)
+docker stats --no-stream eco_air_256
+
+docker run -d --name eco_air_384 -m 384m eco-air-backend:1.0.0
+
+docker inspect eco_air_384 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker logs --timestamps eco_air_384 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:13:49.679377608Z 2026-10-21T01:13:49.678Z  INFO 1 --- [           main]
+e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 4.756 seconds (process running for 5.259)
+docker stats --no-stream eco_air_384
+
+docker run -d --name eco_air_512 -m 512m eco-air-backend:1.0.0
+
+docker inspect eco_air_512 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker logs --timestamps eco_air_512 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:14:07.160381993Z 2026-10-21T01:14:07.159Z  INFO 1 --- [           main]
+e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 5.134 seconds (process running for 5.854)
+docker stats --no-stream eco_air_512
+
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261020201417
+**********************
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261020201558
+Nombre de usuario: NICOLAS-PC\Nicolas
+Usuario RunAs: NICOLAS-PC\Nicolas
+Nombre de la configuración: 
+Máquina: NICOLAS-PC (Microsoft Windows NT 10.0.26300.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/calibrate.ps1
+Id. de proceso: 12520
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Nicolas\Documents\Universidad\Semestres\Sexto Semestre\Programación Orientada a Objetos\Taller 5\Taller-Docker-POO\audit_session.log
+docker inspect eco_air_crash --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker run -d --name eco_air_cal_152 -m 152m eco-air-backend:1.0.0
+
+docker inspect eco_air_cal_152 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker logs --timestamps eco_air_cal_152 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:16:05.590349057Z 2026-10-21T01:16:05.589Z  INFO 1 --- [           main] e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 5.81 seconds (process running for 6.501)
+docker stats --no-stream eco_air_cal_152
+
+RESULT limit=152MiB startupSeconds=5.81 pass=True
+docker rm -f eco_air_cal_152
+
+docker run -d --name eco_air_cal_100 -m 100m eco-air-backend:1.0.0
+
+docker inspect eco_air_cal_100 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker logs --timestamps eco_air_cal_100 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:16:27.082529184Z 2026-10-21T01:16:27.065Z  INFO 1 --- [           main] e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 8.342 seconds (process running for 8.82)
+docker stats --no-stream eco_air_cal_100
+
+RESULT limit=100MiB startupSeconds=8.342 pass=True
+docker rm -f eco_air_cal_100
+
+docker run -d --name eco_air_cal_74 -m 74m eco-air-backend:1.0.0
+
+docker inspect eco_air_cal_74 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: exited | ExitCode: 137 | OOMKilled: true
+docker logs --timestamps eco_air_cal_74 | Select-String 'Started EcoAirApplication'
+docker stats --no-stream eco_air_cal_74
+
+RESULT limit=74MiB startupSeconds=Infinity pass=False
+docker rm -f eco_air_cal_74
+
+docker run -d --name eco_air_cal_87 -m 87m eco-air-backend:1.0.0
+
+docker inspect eco_air_cal_87 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker logs --timestamps eco_air_cal_87 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:17:08.905785597Z 2026-10-21T01:17:08.905Z  INFO 1 --- [           main] e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 14.141 seconds (process running for 14.728)
+docker stats --no-stream eco_air_cal_87
+
+RESULT limit=87MiB startupSeconds=14.141 pass=True
+docker rm -f eco_air_cal_87
+
+docker run -d --name eco_air_cal_80 -m 80m eco-air-backend:1.0.0
+
+docker inspect eco_air_cal_80 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: exited | ExitCode: 137 | OOMKilled: true
+docker logs --timestamps eco_air_cal_80 | Select-String 'Started EcoAirApplication'
+docker stats --no-stream eco_air_cal_80
+
+RESULT limit=80MiB startupSeconds=Infinity pass=False
+docker rm -f eco_air_cal_80
+
+docker run -d --name eco_air_cal_83 -m 83m eco-air-backend:1.0.0
+
+docker inspect eco_air_cal_83 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: exited | ExitCode: 137 | OOMKilled: true
+docker logs --timestamps eco_air_cal_83 | Select-String 'Started EcoAirApplication'
+docker stats --no-stream eco_air_cal_83
+
+RESULT limit=83MiB startupSeconds=Infinity pass=False
+docker rm -f eco_air_cal_83
+
+docker run -d --name eco_air_cal_85 -m 85m eco-air-backend:1.0.0
+
+docker inspect eco_air_cal_85 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: exited | ExitCode: 137 | OOMKilled: true
+docker logs --timestamps eco_air_cal_85 | Select-String 'Started EcoAirApplication'
+docker stats --no-stream eco_air_cal_85
+
+RESULT limit=85MiB startupSeconds=Infinity pass=False
+docker rm -f eco_air_cal_85
+
+docker run -d --name eco_air_cal_86 -m 86m eco-air-backend:1.0.0
+
+docker inspect eco_air_cal_86 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker logs --timestamps eco_air_cal_86 | Select-String 'Started EcoAirApplication'
+docker stats --no-stream eco_air_cal_86
+
+RESULT limit=86MiB startupSeconds=Infinity pass=False
+docker rm -f eco_air_cal_86
+
+RESULT minimumTested=87MiB resolution=1MiB
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261020201821
+**********************
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261020201839
+Nombre de usuario: NICOLAS-PC\Nicolas
+Usuario RunAs: NICOLAS-PC\Nicolas
+Nombre de la configuración: 
+Máquina: NICOLAS-PC (Microsoft Windows NT 10.0.26300.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/stability.ps1
+Id. de proceso: 5876
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Nicolas\Documents\Universidad\Semestres\Sexto Semestre\Programación Orientada a Objetos\Taller 5\Taller-Docker-POO\audit_session.log
+docker run -d --name eco_air_stable_87 -m 87m eco-air-backend:1.0.0
+
+docker inspect eco_air_stable_87 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker stats --no-stream eco_air_stable_87
+
+docker inspect eco_air_stable_87 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker stats --no-stream eco_air_stable_87
+
+docker inspect eco_air_stable_87 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker stats --no-stream eco_air_stable_87
+
+docker logs --timestamps eco_air_stable_87 | Select-String 'Started EcoAirApplication'
+
+2026-10-21T01:18:56.949416707Z 2026-10-21T01:18:56.948Z  INFO 1 --- [           main]
+e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 16.341 seconds (process running for 16.978)
+docker rm -f eco_air_stable_87
+
+docker run -d --name eco_air_stable_100 -m 100m eco-air-backend:1.0.0
+
+docker inspect eco_air_stable_100 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker stats --no-stream eco_air_stable_100
+
+docker inspect eco_air_stable_100 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker stats --no-stream eco_air_stable_100
+
+docker inspect eco_air_stable_100 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker stats --no-stream eco_air_stable_100
+
+docker logs --timestamps eco_air_stable_100 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:19:40.500366600Z 2026-10-21T01:19:40.499Z  INFO 1 --- [           main]
+e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 9.349 seconds (process running for 10.079)
+docker rm -f eco_air_stable_100
+
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261020202020
+**********************
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261020202052
+Nombre de usuario: NICOLAS-PC\Nicolas
+Usuario RunAs: NICOLAS-PC\Nicolas
+Nombre de la configuración: 
+Máquina: NICOLAS-PC (Microsoft Windows NT 10.0.26300.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/calibrate_stable.ps1
+Id. de proceso: 6024
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Nicolas\Documents\Universidad\Semestres\Sexto Semestre\Programación Orientada a Objetos\Taller 5\Taller-Docker-POO\audit_session.log
+docker run -d --name eco_air_verify_93 -m 93m eco-air-backend:1.0.0
+
+docker inspect eco_air_verify_93 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker stats --no-stream eco_air_verify_93
+
+docker inspect eco_air_verify_93 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker stats --no-stream eco_air_verify_93
+
+docker logs --timestamps eco_air_verify_93 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:21:06.367918736Z 2026-10-21T01:21:06.367Z  INFO 1 --- [           main] e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 12.259 seconds (process running for 13.248)
+RESULT limit=93MiB startupSeconds=12.259 stable45s=True
+docker rm -f eco_air_verify_93
+
+docker run -d --name eco_air_verify_90 -m 90m eco-air-backend:1.0.0
+
+docker inspect eco_air_verify_90 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker stats --no-stream eco_air_verify_90
+
+docker inspect eco_air_verify_90 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker stats --no-stream eco_air_verify_90
+
+docker logs --timestamps eco_air_verify_90 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:21:55.617282425Z 2026-10-21T01:21:55.616Z  INFO 1 --- [           main] e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 13.478 seconds (process running for 13.946)
+RESULT limit=90MiB startupSeconds=13.478 stable45s=True
+docker rm -f eco_air_verify_90
+
+docker run -d --name eco_air_verify_88 -m 88m eco-air-backend:1.0.0
+
+docker inspect eco_air_verify_88 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: exited | ExitCode: 137 | OOMKilled: true
+docker stats --no-stream eco_air_verify_88
+
+docker inspect eco_air_verify_88 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: exited | ExitCode: 137 | OOMKilled: true
+docker stats --no-stream eco_air_verify_88
+
+docker logs --timestamps eco_air_verify_88 | Select-String 'Started EcoAirApplication'
+RESULT limit=88MiB startupSeconds=Infinity stable45s=False
+docker rm -f eco_air_verify_88
+
+docker run -d --name eco_air_verify_89 -m 89m eco-air-backend:1.0.0
+
+docker inspect eco_air_verify_89 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker stats --no-stream eco_air_verify_89
+
+docker inspect eco_air_verify_89 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+Status: running | ExitCode: 0 | OOMKilled: false
+docker stats --no-stream eco_air_verify_89
+
+docker logs --timestamps eco_air_verify_89 | Select-String 'Started EcoAirApplication'
+2026-10-21T01:23:31.068752245Z 2026-10-21T01:23:31.068Z  INFO 1 --- [           main] e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 13.364 seconds (process running for 13.95)
+RESULT limit=89MiB startupSeconds=13.364 stable45s=True
+docker rm -f eco_air_verify_89
+
+RESULT minimumStableTested=89MiB resolution=1MiB
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261020202406
+**********************
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261020202426
+Nombre de usuario: NICOLAS-PC\Nicolas
+Usuario RunAs: NICOLAS-PC\Nicolas
+Nombre de la configuración: 
+Máquina: NICOLAS-PC (Microsoft Windows NT 10.0.26300.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/recheck_89.ps1
+Id. de proceso: 18128
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Nicolas\Documents\Universidad\Semestres\Sexto Semestre\Programación Orientada a Objetos\Taller 5\Taller-Docker-POO\audit_session.log
+docker run -d --name eco_air_recheck_89 -m 89m eco-air-backend:1.0.0
+
+docker inspect eco_air_recheck_89 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker stats --no-stream eco_air_recheck_89
+
+docker inspect eco_air_recheck_89 --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker stats --no-stream eco_air_recheck_89
+
+docker logs --timestamps eco_air_recheck_89 | Select-String 'Started EcoAirApplication'
+
+2026-10-21T01:24:40.962706981Z 2026-10-21T01:24:40.962Z  INFO 1 --- [           main]
+e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 12.823 seconds (process running for 13.583)
+docker rm -f eco_air_recheck_89
+
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261020202516
+**********************
+**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261020202546
+Nombre de usuario: NICOLAS-PC\Nicolas
+Usuario RunAs: NICOLAS-PC\Nicolas
+Nombre de la configuración: 
+Máquina: NICOLAS-PC (Microsoft Windows NT 10.0.26300.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/final_session.ps1
+Id. de proceso: 23288
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es C:\Users\Nicolas\Documents\Universidad\Semestres\Sexto Semestre\Programación Orientada a Objetos\Taller 5\Taller-Docker-POO\audit_session.log
+docker image inspect eco-air-backend:1.0.0 --format={{.Id}}
+
+docker image inspect eco-air-backend:1.0.0 --format={{json .RootFS.Layers}}
+
+docker rm -f eco_air_active
+
+docker run -d --name eco_air_active -m 89m -p 8080:8080 eco-air-backend:1.0.0
+
+docker inspect eco_air_active --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker stats --no-stream eco_air_active
+
+docker inspect eco_air_active --format='Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}'
+
+docker top eco_air_active -o pid,user,comm
+
+docker exec eco_air_active env | Select-String OPERATOR_ID
+
+OPERATOR_ID=841024
+docker logs --timestamps eco_air_active | Select-String 'Started EcoAirApplication'
+2026-10-21T01:26:03.427397464Z 2026-10-21T01:26:03.426Z  INFO 1 --- [           main]
+e.universidad.ecoair.EcoAirApplication   : Started EcoAirApplication in 14.234 seconds (process running for 15.006)
+docker stats --no-stream eco_air_active
+
+docker exec eco_air_active wget -qO- http://localhost:8080/alerts
+
+docker inspect eco_air_active --format={{.Id}}
+
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261020202641
+**********************
